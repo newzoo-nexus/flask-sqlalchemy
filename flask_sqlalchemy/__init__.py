@@ -893,11 +893,11 @@ class SQLAlchemy(object):
         pool_class = app.config.get("SQLALCHEMY_POOL_CLASS")
         from sqlalchemy.pool import NullPool, QueuePool, StaticPool
 
-        if pool_class.lower() == "queuepool":
+        if pool_class and pool_class.lower() == "queuepool":
             options["poolclass"] = QueuePool
-        elif pool_class.lower() == "staticpool":
+        elif pool_class and pool_class.lower() == "staticpool":
             options["poolclass"] = StaticPool
-        elif pool_class.lower() == "nullpool":
+        elif pool_class and pool_class.lower() == "nullpool":
             options["poolclass"] = NullPool
 
     def apply_driver_hacks(self, app, sa_url, options):
