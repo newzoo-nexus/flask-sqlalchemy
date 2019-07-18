@@ -890,7 +890,7 @@ class SQLAlchemy(object):
         _setdefault("pool_recycle", "SQLALCHEMY_POOL_RECYCLE")
         _setdefault("max_overflow", "SQLALCHEMY_MAX_OVERFLOW")
 
-        pool_class = app.config.get("SQLALCHEMY_POOL_CLASS")
+        pool_class = app.config.get("SQLALCHEMY_POOL_CLASS", "nullpool")
         from sqlalchemy.pool import NullPool, QueuePool, StaticPool
 
         if pool_class and pool_class.lower() == "queuepool":
